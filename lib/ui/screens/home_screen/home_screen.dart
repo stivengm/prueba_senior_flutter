@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
           drawer: HomeDrawer(scaffoldKey: scaffoldKey),
           body: RefreshIndicator(
             onRefresh: () {
-              return Future.delayed(const Duration(seconds: 8), () {
+              return Future.delayed(const Duration(seconds: 2), () {
                 1+1;
               });
             },
