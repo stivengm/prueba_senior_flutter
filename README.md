@@ -9,7 +9,13 @@ Este proyecto está desarrollador en Flutter con el lenguaje de programación Da
 
 > Versión de Flutter: 3.19.1
 
-## Instrucciones de uso Aplicación
+## Instrucciones de uso Aplicación - Pruebas
+
+### Pantalla Login
+Los campos `Email` tiene la acción en el teclado para pasar al siguiente campo de texto y el campo `Contraseña` tiene la acción de cerrar el teclado, en este caso al ingresar a cualquiera de estos dos campos y al dar tap en la pantalla en otro lado elimina el focus del campo y sale de este, para iniciar sesión deberá ingresar de email `admin@treebu.com.co` y de contraseña `administrador2024%` de lo contrario generará un error la autenticación (mock).
+
+
+
 
 ## Getting Started
 
