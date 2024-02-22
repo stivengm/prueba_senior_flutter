@@ -1,6 +1,15 @@
-# prueba_senior_flutter_treebu
+# Prueba Técnica - Desarrollador Senior Flutter Treebu
 
-A new Flutter project.
+Este proyecto está desarrollador en Flutter con el lenguaje de programación Dart con versión 3.19.1.
+
+## Requisitos para ejecución de proyecto
+
+- Instalar y configurar Flutter en el computador. [Link Flutter](https://flutter.dev/docs/get-started/install)
+- Instalar y configurar Android Studio. [Link Android Studio](https://developer.android.com/studio)
+
+> Versión de Flutter: 3.19.1
+
+## Instrucciones de uso Aplicación
 
 ## Getting Started
 
