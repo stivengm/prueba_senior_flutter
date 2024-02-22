@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_senior_flutter_treebu/core/config/paths_config.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Placeholder(),
+      routes: routesApp(),
+      initialRoute: 'login',
     );
   }
 }
