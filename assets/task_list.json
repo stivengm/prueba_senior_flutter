@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "nameWorker": "Alejandro Martínez",
+        "task": "Clonar proyecto",
+        "dateFinish": "22/feb/2024",
+        "observations": "Entrar al repositorio y clonar el proyecto con comando: git clone + urlRepo",
+        "state": 1
+    },
+    {
+        "id": 2,
+        "nameWorker": "Andrés López",
+        "task": "Envío de reporte clientes",
+        "dateFinish": "22/feb/2024",
+        "observations": "Generar reporte para el envío al cliente Trebuu",
+        "state": 2
+    },
+    {
+        "id": 3,
+        "nameWorker": "Andrés López",
+        "task": "Envío de reporte clientes",
+        "dateFinish": "22/feb/2024",
+        "observations": "Generar reporte para el envío al cliente Trebuu",
+        "state": 3
+    }
+]
