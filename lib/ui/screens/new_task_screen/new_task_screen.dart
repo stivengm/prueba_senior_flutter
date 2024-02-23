@@ -146,6 +146,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
       ScaffoldMessenger.of(context).clearSnackBars();
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Faltan campos por llenar")));
     }
+    final homeBloc = BlocProvider.of<HomeBloc>(context);
 
     final taskSaved = TaskModel(
       nameWorker: nameEmployee.text.trim(),
@@ -155,10 +156,11 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
       state: 1
     );
 
-    print(jsonEncode(taskSaved));
+    final allTask = homeBloc.state.taskList;
+    allTask!.add(taskSaved);
 
-    final homeBloc = BlocProvider.of<HomeBloc>(context);
-    homeBloc.addTaskToList(taskSaved);
+    homeBloc.add( HandleTask(allTask) );
+    homeBloc.add( const CountRecords(1) );
 
 
     ScaffoldMessenger.of(context).clearSnackBars();

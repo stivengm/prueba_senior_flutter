@@ -11,13 +11,21 @@ part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeInitial()) {
-    on<HomeEvent>((event, emit) {
-      // TODO: implement event handler
-    });
 
     on<HandleTask>((event, emit) {
       emit( state.copyWith( taskList: event.taskList ) );
     });
+
+    on<CountRecords>((event, emit) {
+      var counter = state.countRecords;
+      counter++;
+      emit( state.copyWith( countRecords: counter ) );
+    });
+
+    on<AddTask>((event, emit) {
+      emit( state.copyWith( taskList: event.taskList ) );
+    });
+
 
     readTaskJson();
   }
@@ -28,7 +36,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     final List<TaskModel> taskModel = dataJson.map<TaskModel>((m) => TaskModel.fromJson(Map<String, dynamic>.from(m))).toList();
 
     add( HandleTask(taskModel) );
-    print(jsonEncode(taskModel));
   }
 
 }

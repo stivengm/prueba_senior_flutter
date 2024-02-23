@@ -12,6 +12,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scaffoldKey = GlobalKey<ScaffoldState>();
+    Size media = MediaQuery.of(context).size;
 
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
@@ -26,10 +27,23 @@ class HomeScreen extends StatelessWidget {
                 1+1;
               });
             },
-            child: ListView.builder(
-              itemCount: state.taskList!.length,
-              itemBuilder: (context, i) => ItemCardTask(task: state.taskList![i])
-            ),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const Text("Aquí van los filtros!"),
+                  SizedBox(
+                    height: media.height * 1,
+                    width: double.infinity,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: state.taskList!.length,
+                      itemBuilder: (context, i) => ItemCardTask(task: state.taskList![i])
+                    ),
+                  ),
+                ],
+              ),
+            )
           ),
           floatingActionButton: FloatingActionButton(
             backgroundColor: primaryColor,

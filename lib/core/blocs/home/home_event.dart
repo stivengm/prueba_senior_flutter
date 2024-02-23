@@ -11,3 +11,13 @@ class HandleTask extends HomeEvent {
   final List<TaskModel> taskList;
   const HandleTask(this.taskList);
 }
+
+class AddTask extends HomeEvent {
+  final List<TaskModel> taskList;
+  const AddTask(this.taskList);
+}
+
+class CountRecords extends HomeEvent {
+  final int countRecords;
+  const CountRecords(this.countRecords);
+}
