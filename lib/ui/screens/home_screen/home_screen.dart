@@ -12,7 +12,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scaffoldKey = GlobalKey<ScaffoldState>();
-    Size media = MediaQuery.of(context).size;
 
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
@@ -32,8 +31,6 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   const Text("Aquí van los filtros!"),
                   SizedBox(
-                    height: media.height * 1,
-                    width: double.infinity,
                     child: ListView.builder(
                       shrinkWrap: true,
                       physics: const BouncingScrollPhysics(),
