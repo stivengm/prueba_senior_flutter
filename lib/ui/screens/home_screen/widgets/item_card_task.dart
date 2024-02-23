@@ -28,7 +28,6 @@ class _ItemCardTaskState extends State<ItemCardTask> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(task.id.toString()),
               Text(task.nameWorker, style: Theme.of(context).textTheme.headlineMedium!.copyWith( fontSize: 20.0 ),),
               const SizedBox(height: 2.0),
               TaskDescriptions(title: 'Fecha: ', subtitle: task.dateFinish),
