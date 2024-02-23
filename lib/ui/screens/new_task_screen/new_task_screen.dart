@@ -76,7 +76,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
                     );
 
                     if (pickedDate != null) {
-                      String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
+                      String formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate);
                       setState(() {
                         date.text = formattedDate;
                       });
