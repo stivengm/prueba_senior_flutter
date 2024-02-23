@@ -27,3 +27,11 @@ class HandleStateTask extends HomeEvent {
   final List<TaskModel> taskFilter;
   const HandleStateTask({required this.stateTask, required this.taskFilter});
 }
+
+class UpdateTaskById extends HomeEvent {
+  final int idTaskUpdate;
+  final int idTask;
+  final List<TaskModel> taskFilter;
+  final List<TaskModel>? taskList;
+  const UpdateTaskById({required this.idTaskUpdate, required this.idTask, required this.taskFilter, this.taskList});
+}

@@ -27,6 +27,18 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       emit( state.copyWith( taskList: event.taskList ) );
     });
 
+    on<UpdateTaskById>((event, emit) {
+      List<TaskModel> listFiltered;
+      listFiltered = state.taskList!.where((task) => task.id == event.idTask).toList();
+      TaskModel updateTask = listFiltered[0];
+      state.taskList!.remove(listFiltered[0]);
+      updateTask.state = event.idTaskUpdate;
+      listFiltered = state.taskList!;
+      listFiltered.add(updateTask);
+      emit( state.copyWith( idTaskUpdate: event.idTaskUpdate, taskFilter: listFiltered, taskList: listFiltered ) );
+    });
+    
+
     on<HandleStateTask>((event, emit) {
       List<TaskModel> listFiltered;
       if (event.stateTask == StateGroup.allStates) {
