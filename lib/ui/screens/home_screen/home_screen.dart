@@ -33,6 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
               IconButton(
                 onPressed: () {
                   context.read<HomeBloc>().add( const HandleReload(true) );
+                  ScaffoldMessenger.of(context).clearSnackBars();
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Se ha establecido el valor inicial de las tareas, haga el pullToRefresh para actualizarlas.")));
                 },
                 icon: const Icon(
                   Icons.replay_outlined
