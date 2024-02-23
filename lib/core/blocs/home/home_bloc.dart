@@ -53,10 +53,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       emit( state.copyWith( stateTask: event.stateTask, taskFilter: listFiltered ) );
     });
 
+    on<HandleReload>((event, emit) {
+      emit( state.copyWith( isReloadTaskInitial: event.isReloadTaskInitial ) );
+    });
+
     readTaskJson();
   }
 
   Future<void> readTaskJson() async {
+    add( const HandleReload(false) );
     final String response = await rootBundle.loadString('assets/task_list.json');
     final dataJson = jsonDecode(response);
     final List<TaskModel> taskModel = dataJson.map<TaskModel>((m) => TaskModel.fromJson(Map<String, dynamic>.from(m))).toList();

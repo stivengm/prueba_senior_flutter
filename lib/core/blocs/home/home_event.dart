@@ -35,3 +35,8 @@ class UpdateTaskById extends HomeEvent {
   final List<TaskModel>? taskList;
   const UpdateTaskById({required this.idTaskUpdate, required this.idTask, required this.taskFilter, this.taskList});
 }
+
+class HandleReload extends HomeEvent {
+  final bool isReloadTaskInitial;
+  const HandleReload(this.isReloadTaskInitial);
+}

@@ -3,6 +3,7 @@ part of 'home_bloc.dart';
 class HomeState extends Equatable {
   final List<TaskModel>? taskList;
   final List<TaskModel>? taskFilter;
+  final bool isReloadTaskInitial;
   final int countRecords;
   final int idTaskUpdate;
   final int idTask;
@@ -11,6 +12,7 @@ class HomeState extends Equatable {
   const HomeState({
     taskList,
     taskFilter,
+    this.isReloadTaskInitial = false,
     this.countRecords = 0,
     this.idTaskUpdate = 0,
     this.idTask = 0,
@@ -21,6 +23,7 @@ class HomeState extends Equatable {
   HomeState copyWith({
     List<TaskModel>? taskList,
     List<TaskModel>? taskFilter,
+    bool? isReloadTaskInitial,
     int? countRecords,
     int? idTaskUpdate,
     int? idTask,
@@ -28,6 +31,7 @@ class HomeState extends Equatable {
   }) => HomeState(
     taskList: taskList ?? this.taskList,
     countRecords: countRecords ?? this.countRecords,
+    isReloadTaskInitial: isReloadTaskInitial ?? this.isReloadTaskInitial,
     idTaskUpdate: idTaskUpdate ?? this.idTaskUpdate,
     idTask: idTask ?? this.idTask,
     stateTask: stateTask ?? this.stateTask,
@@ -35,7 +39,7 @@ class HomeState extends Equatable {
   );
   
   @override
-  List<Object?> get props => [ taskList, taskFilter, countRecords, stateTask, idTaskUpdate, idTask ];
+  List<Object?> get props => [ taskList, taskFilter, countRecords, stateTask, idTaskUpdate, idTask, isReloadTaskInitial ];
 }
 
 final class HomeInitial extends HomeState {}

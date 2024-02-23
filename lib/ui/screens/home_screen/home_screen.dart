@@ -28,12 +28,25 @@ class _HomeScreenState extends State<HomeScreen> {
         return state.taskList!.isNotEmpty ? 
         Scaffold(
           backgroundColor: backgroundApp,
-          appBar: AppBar(),
+          appBar: AppBar(
+            actions: [
+              IconButton(
+                onPressed: () {
+                  context.read<HomeBloc>().add( const HandleReload(true) );
+                },
+                icon: const Icon(
+                  Icons.replay_outlined
+                )
+              )
+            ],
+          ),
           drawer: HomeDrawer(scaffoldKey: scaffoldKey),
           body: RefreshIndicator(
             onRefresh: () {
               return Future.delayed(const Duration(seconds: 2), () {
-                1+1;
+                if (state.isReloadTaskInitial) {
+                  context.read<HomeBloc>().readTaskJson();
+                }
               });
             },
             child: ListView(
