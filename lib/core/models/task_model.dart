@@ -5,7 +5,7 @@ List<TaskModel> taskModelFromJson(String str) => List<TaskModel>.from(json.decod
 String taskModelToJson(List<TaskModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class TaskModel {
-  int id;
+  int? id;
   String nameWorker;
   String task;
   String dateFinish;
@@ -13,7 +13,7 @@ class TaskModel {
   int state;
 
   TaskModel({
-    required this.id,
+    this.id,
     required this.nameWorker,
     required this.task,
     required this.dateFinish,
