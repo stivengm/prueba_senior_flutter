@@ -31,6 +31,15 @@ class HomeScreen extends StatelessWidget {
               itemBuilder: (context, i) => ItemCardTask(task: state.taskList![i])
             ),
           ),
+          floatingActionButton: FloatingActionButton(
+            backgroundColor: primaryColor,
+            onPressed: () => Navigator.of(context).pushNamed('newTask'),
+            child: const Icon(
+              Icons.add,
+              color: whiteColor,
+            ),
+          ),
+          
         ) : const LoaderApp();
       },
     );
