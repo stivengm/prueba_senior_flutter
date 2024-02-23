@@ -16,7 +16,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  StateGroup selectStatusTask = StateGroup.statusPending;
+  StateGroup selectStatusTask = StateGroup.allStates;
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +42,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   title: const Text("Filtrar por estado"),
                   children: [
                     RadioListTile(
+                      title: const Text("Todas"),
+                      value: StateGroup.allStates,
+                      groupValue: state.stateTask,
+                      onChanged: (value) {
+                        context.read<HomeBloc>().add( HandleStateTask( stateTask: value!, taskFilter: state.taskList!) );
+                      }
+                    ),
+                    RadioListTile(
                       title: const Text("Pendiente"),
                       value: StateGroup.statusPending,
                       groupValue: state.stateTask,
                       onChanged: (value) {
-                        context.read<HomeBloc>().add( HandleStateTask(value!) );
+                        context.read<HomeBloc>().add( HandleStateTask( stateTask: value!, taskFilter: state.taskList!) );
                       }
                     ),
                     RadioListTile(
@@ -54,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       value: StateGroup.statusInProgress,
                       groupValue: state.stateTask,
                       onChanged: (value) {
-                        context.read<HomeBloc>().add( HandleStateTask(value!) );
+                        context.read<HomeBloc>().add( HandleStateTask( stateTask: value!, taskFilter: state.taskList! ) );
                       }
                     ),
                     RadioListTile(
@@ -62,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       value: StateGroup.statusComplete,
                       groupValue: state.stateTask,
                       onChanged: (value) {
-                        context.read<HomeBloc>().add( HandleStateTask(value!) );
+                        context.read<HomeBloc>().add( HandleStateTask( stateTask: value!, taskFilter: state.taskList! ) );
                       }
                     ),
                   ],
@@ -71,8 +79,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ListView.builder(
                   shrinkWrap: true,
                   physics: const ScrollPhysics(),
-                  itemCount: state.taskList!.length,
-                  itemBuilder: (context, i) => ItemCardTask(task: state.taskList![i])
+                  itemCount: state.taskFilter!.length,
+                  itemBuilder: (context, i) => ItemCardTask(task: state.taskFilter![i])
                 )
               ],
             ),

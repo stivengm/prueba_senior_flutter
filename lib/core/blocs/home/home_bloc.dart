@@ -28,7 +28,17 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     });
 
     on<HandleStateTask>((event, emit) {
-      emit( state.copyWith( stateTask: event.stateTask ) );
+      List<TaskModel> listFiltered;
+      if (event.stateTask == StateGroup.allStates) {
+        listFiltered = state.taskList!;
+      } else if (event.stateTask == StateGroup.statusPending) {
+        listFiltered = state.taskList!.where((state) => state.state == 1).toList();
+      } else if (event.stateTask == StateGroup.statusInProgress) {
+        listFiltered = state.taskList!.where((state) => state.state == 2).toList();
+      } else {
+        listFiltered = state.taskList!.where((state) => state.state == 3).toList();
+      }
+      emit( state.copyWith( stateTask: event.stateTask, taskFilter: listFiltered ) );
     });
 
     readTaskJson();
@@ -40,6 +50,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     final List<TaskModel> taskModel = dataJson.map<TaskModel>((m) => TaskModel.fromJson(Map<String, dynamic>.from(m))).toList();
 
     add( HandleTask(taskModel) );
+    add( HandleStateTask( stateTask: StateGroup.allStates, taskFilter: taskModel) );
   }
 
 }

@@ -1,1 +1,1 @@
-enum StateGroup { statusPending, statusInProgress, statusComplete }
+enum StateGroup { allStates, statusPending, statusInProgress, statusComplete }

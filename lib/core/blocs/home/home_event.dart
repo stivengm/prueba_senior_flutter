@@ -24,5 +24,6 @@ class CountRecords extends HomeEvent {
 
 class HandleStateTask extends HomeEvent {
   final StateGroup stateTask;
-  const HandleStateTask(this.stateTask);
+  final List<TaskModel> taskFilter;
+  const HandleStateTask({required this.stateTask, required this.taskFilter});
 }
