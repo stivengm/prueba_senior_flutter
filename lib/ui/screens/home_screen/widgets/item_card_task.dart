@@ -24,6 +24,7 @@ class ItemCardTask extends StatelessWidget {
       ),
       margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
