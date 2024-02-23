@@ -151,7 +151,8 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
       task: task.text.trim(),
       dateFinish: date.text.trim(),
       observations: observations.text.trim(),
-      state: 1
+      state: 1,
+      id: homeBloc.state.taskList!.length + 1
     );
 
     final allTask = homeBloc.state.taskList;
