@@ -20,5 +20,15 @@ const appMenuItems = <MenuDrawerItem> [
     icon: Icons.home,
     link: 'home'
   ),
+  MenuDrawerItem(
+    title: 'Lista tareas',
+    icon: Icons.task,
+    link: 'home'
+  ),
+  MenuDrawerItem(
+    title: 'Trabajadores',
+    icon: Icons.work,
+    link: 'home'
+  ),
 
 ];
