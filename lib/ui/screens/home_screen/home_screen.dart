@@ -8,12 +8,19 @@ import 'package:prueba_senior_flutter_treebu/ui/widgets/loader_app_widget.dart';
 
 enum StateGroup { statusPending, statusInProgress, statusComplete }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+
+  StateGroup selectStatusTask = StateGroup.statusPending;
+
+  @override
   Widget build(BuildContext context) {
-    StateGroup selectedTransportation = StateGroup.statusPending;
 
     final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -32,6 +39,44 @@ class HomeScreen extends StatelessWidget {
             },
             child: ListView(
               children: [
+                ExpansionTile(
+                  title: const Text("Filtrar por estado"),
+                  children: [
+                    RadioListTile(
+                      title: const Text("Pendiente"),
+                      value: StateGroup.statusPending,
+                      groupValue: selectStatusTask,
+                      onChanged: (value) {
+                        print(value);
+                        setState(() {
+                          selectStatusTask = StateGroup.statusPending;
+                        });
+                      }
+                    ),
+                    RadioListTile(
+                      title: const Text("En proceso"),
+                      value: StateGroup.statusInProgress,
+                      groupValue: selectStatusTask,
+                      onChanged: (value) {
+                        print(value);
+                        setState(() {
+                          selectStatusTask = StateGroup.statusInProgress;
+                        });
+                      }
+                    ),
+                    RadioListTile(
+                      title: const Text("Completado"),
+                      value: StateGroup.statusComplete,
+                      groupValue: selectStatusTask,
+                      onChanged: (value) {
+                        print(value);
+                        setState(() {
+                          selectStatusTask = StateGroup.statusComplete;
+                        });
+                      }
+                    ),
+                  ],
+                ),
                 const SizedBox(height: 20.0),
                 ListView.builder(
                   shrinkWrap: true,
