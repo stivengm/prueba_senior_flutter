@@ -163,7 +163,7 @@ class _LoginScreenState extends State<LoginScreen> {
     const email = 'admin@treebu.com.co';
     const password = 'administrador2024%';
 
-    if (emailController.text.trim() == email || emailController.text.trim() == password) {
+    if (emailController.text.trim() == email && emailController.text.trim() == password) {
       const user = UserModel(
         email: email,
         isLogged: true
