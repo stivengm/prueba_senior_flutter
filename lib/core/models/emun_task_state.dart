@@ -1,0 +1,1 @@
+enum StateGroup { statusPending, statusInProgress, statusComplete }

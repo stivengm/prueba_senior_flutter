@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:prueba_senior_flutter_treebu/core/blocs/home/home_bloc.dart';
+import 'package:prueba_senior_flutter_treebu/core/models/emun_task_state.dart';
 import 'package:prueba_senior_flutter_treebu/ui/app_style.dart';
 import 'package:prueba_senior_flutter_treebu/ui/drawers/home_drawer.dart';
 import 'package:prueba_senior_flutter_treebu/ui/screens/home_screen/widgets/item_card_task.dart';
 import 'package:prueba_senior_flutter_treebu/ui/widgets/loader_app_widget.dart';
-
-enum StateGroup { statusPending, statusInProgress, statusComplete }
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -45,34 +44,25 @@ class _HomeScreenState extends State<HomeScreen> {
                     RadioListTile(
                       title: const Text("Pendiente"),
                       value: StateGroup.statusPending,
-                      groupValue: selectStatusTask,
+                      groupValue: state.stateTask,
                       onChanged: (value) {
-                        print(value);
-                        setState(() {
-                          selectStatusTask = StateGroup.statusPending;
-                        });
+                        context.read<HomeBloc>().add( HandleStateTask(value!) );
                       }
                     ),
                     RadioListTile(
                       title: const Text("En proceso"),
                       value: StateGroup.statusInProgress,
-                      groupValue: selectStatusTask,
+                      groupValue: state.stateTask,
                       onChanged: (value) {
-                        print(value);
-                        setState(() {
-                          selectStatusTask = StateGroup.statusInProgress;
-                        });
+                        context.read<HomeBloc>().add( HandleStateTask(value!) );
                       }
                     ),
                     RadioListTile(
                       title: const Text("Completado"),
                       value: StateGroup.statusComplete,
-                      groupValue: selectStatusTask,
+                      groupValue: state.stateTask,
                       onChanged: (value) {
-                        print(value);
-                        setState(() {
-                          selectStatusTask = StateGroup.statusComplete;
-                        });
+                        context.read<HomeBloc>().add( HandleStateTask(value!) );
                       }
                     ),
                   ],

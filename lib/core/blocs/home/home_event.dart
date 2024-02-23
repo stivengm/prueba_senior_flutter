@@ -21,3 +21,8 @@ class CountRecords extends HomeEvent {
   final int countRecords;
   const CountRecords(this.countRecords);
 }
+
+class HandleStateTask extends HomeEvent {
+  final StateGroup stateTask;
+  const HandleStateTask(this.stateTask);
+}

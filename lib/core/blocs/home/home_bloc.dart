@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
 import 'package:flutter/services.dart';
+import 'package:prueba_senior_flutter_treebu/core/models/emun_task_state.dart';
 import 'package:prueba_senior_flutter_treebu/core/models/task_model.dart';
 
 part 'home_event.dart';
@@ -26,6 +27,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       emit( state.copyWith( taskList: event.taskList ) );
     });
 
+    on<HandleStateTask>((event, emit) {
+      emit( state.copyWith( stateTask: event.stateTask ) );
+    });
 
     readTaskJson();
   }
