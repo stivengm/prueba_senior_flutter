@@ -6,11 +6,15 @@ import 'package:prueba_senior_flutter_treebu/ui/drawers/home_drawer.dart';
 import 'package:prueba_senior_flutter_treebu/ui/screens/home_screen/widgets/item_card_task.dart';
 import 'package:prueba_senior_flutter_treebu/ui/widgets/loader_app_widget.dart';
 
+enum StateGroup { statusPending, statusInProgress, statusComplete }
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    StateGroup selectedTransportation = StateGroup.statusPending;
+
     final scaffoldKey = GlobalKey<ScaffoldState>();
 
     return BlocBuilder<HomeBloc, HomeState>(
@@ -26,21 +30,17 @@ class HomeScreen extends StatelessWidget {
                 1+1;
               });
             },
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  const Text("Aquí van los filtros!"),
-                  SizedBox(
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: state.taskList!.length,
-                      itemBuilder: (context, i) => ItemCardTask(task: state.taskList![i])
-                    ),
-                  ),
-                ],
-              ),
-            )
+            child: ListView(
+              children: [
+                const SizedBox(height: 20.0),
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: const ScrollPhysics(),
+                  itemCount: state.taskList!.length,
+                  itemBuilder: (context, i) => ItemCardTask(task: state.taskList![i])
+                )
+              ],
+            ),
           ),
           floatingActionButton: FloatingActionButton(
             backgroundColor: primaryColor,
